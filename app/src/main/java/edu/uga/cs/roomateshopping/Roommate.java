@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Roommate {
 
     private String email;
-    private String name;
+
     private ArrayList<Item> purchasing;
 
     /**
@@ -16,7 +16,7 @@ public class Roommate {
      */
     public Roommate(){
         email = "";
-        name = "";
+
         purchasing = null;
     }
 
@@ -25,10 +25,9 @@ public class Roommate {
      * @param email the user's email.
      * @param name the user's given name.
      */
-    public Roommate(String email, String name)
+    public Roommate(String email)
     {
         this.email = email;
-        this.name = name;
         purchasing = new ArrayList<Item>();
     }
 

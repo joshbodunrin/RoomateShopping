@@ -15,7 +15,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="128dp"
         android:gravity="center"
-        android:text="Hello World!" />
+        android:text="Roommate Shopping App!"
+        android:textSize="32dp" />
 
     <Button
         android:id="@+id/button4"
