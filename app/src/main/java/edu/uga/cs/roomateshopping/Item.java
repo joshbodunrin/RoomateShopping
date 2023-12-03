@@ -39,7 +39,48 @@ public class Item {
         this.description = description;
         this.buyer = null;
     }
-    // going to need to add all getters and setters
+
+    //getters and setters for instance variables
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getBuyer() {
+        return buyer;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setBuyer(String buyer) {
+        this.buyer = buyer;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }
 
 
