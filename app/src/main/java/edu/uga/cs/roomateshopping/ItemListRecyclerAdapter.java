@@ -19,8 +19,16 @@ import java.util.List;
  */
 public class ItemListRecyclerAdapter extends RecyclerView.Adapter<ItemListRecyclerAdapter.ItemHolder> {
 
+    public static final String TAG = "ItemListRecyclerAdapter";
+
     private List<Item> itemList;
     private Context context;
+
+    public ItemListRecyclerAdapter( List<Item> itemList, Context context ) {
+        this.itemList = itemList;
+        this.context = context;
+    }
+
 
     class ItemHolder extends RecyclerView.ViewHolder {
 
@@ -47,6 +55,9 @@ public class ItemListRecyclerAdapter extends RecyclerView.Adapter<ItemListRecycl
 
         String name = item.getName();
         Double cost = item.getPrice();
+
+        Log.d(TAG, "here is the value of name  " + item.getName());
+        Log.d(TAG, "value of price here  " + item.getPrice());
 
         holder.itemName.setText( item.getName());
         holder.cost.setText(String.valueOf(item.getPrice()));
