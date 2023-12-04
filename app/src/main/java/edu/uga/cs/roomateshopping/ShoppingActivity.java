@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class ShoppingActivity extends AppCompatActivity {
 
+    public static final String TAG = "ShoppingActivity";
+
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
@@ -79,11 +81,15 @@ public class ShoppingActivity extends AppCompatActivity {
         Fragment fragment = null;
 
         // Create a new fragment based on the used selection in the nav drawer
-       /*
+
+
         int itemId = menuItem.getItemId();
         if (itemId == R.id.menu_add) {
-            fragment = new TakeQuiz();
-        } else if (itemId == R.id.menu_review) {
+            fragment = new AddShoppingItem();
+        }
+        Log.d(TAG, "item id that is being linked  " + itemId);
+        Log.d(TAG, "menu id   " + R.id.menu_add);
+        /*else if (itemId == R.id.menu_review) {
             fragment = new ViewQuizzes();
         } else if (itemId == R.id.menu_help) {
             fragment = new HomeScreen();
