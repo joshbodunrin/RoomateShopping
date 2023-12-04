@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,8 @@ import android.widget.Button;
 import com.google.android.material.navigation.NavigationView;
 
 public class ShoppingActivity extends AppCompatActivity {
+
+    public static final String TAG = "ShoppingActivity";
 
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
@@ -73,11 +76,14 @@ public class ShoppingActivity extends AppCompatActivity {
         Fragment fragment = null;
 
         // Create a new fragment based on the used selection in the nav drawer
-        /*
+
         int itemId = menuItem.getItemId();
         if (itemId == R.id.menu_add) {
-            fragment = new TakeQuiz();
-        } else if (itemId == R.id.menu_review) {
+            fragment = new AddShoppingItem();
+        }
+        Log.d(TAG, "item id that is being linked  " + itemId);
+        Log.d(TAG, "menu id   " + R.id.menu_add);
+        /*else if (itemId == R.id.menu_review) {
             fragment = new ViewQuizzes();
         } else if (itemId == R.id.menu_help) {
             fragment = new HomeScreen();

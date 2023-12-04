@@ -40,6 +40,14 @@ public class Item {
         this.buyer = null;
     }
 
+    public Item(String name, double price) {
+        this.key = null;
+        this.name = name;
+        this.price = price;
+        this.description = null;
+        this.buyer = null;
+    }
+
     //getters and setters for instance variables
 
     public double getPrice() {
