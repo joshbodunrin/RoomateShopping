@@ -107,7 +107,7 @@ public class AddShoppingItem extends Fragment {
                         @Override
                         public void onSuccess(Void aVoid) {
                             // confirmation
-                            Toast.makeText(getApplicationContext(), "New item added to list:  " + shoppingItem.getName(),
+                            Toast.makeText(getContext(), "New item added to list:  " + shoppingItem.getName(),
                                     Toast.LENGTH_SHORT).show();
 
                             itemView.setText("");
@@ -117,7 +117,7 @@ public class AddShoppingItem extends Fragment {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "Failed to add item",
+                            Toast.makeText(getContext(), "Failed to add item",
                                     Toast.LENGTH_SHORT).show();
                         }
                     });
