@@ -1,5 +1,6 @@
 package edu.uga.cs.roomateshopping;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,11 +10,14 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ShoppingActivity extends AppCompatActivity {
 
@@ -53,6 +57,8 @@ public class ShoppingActivity extends AppCompatActivity {
                 });
 
 
+
+
     }
 
     private class LogOutButtonClickListener implements View.OnClickListener {
@@ -73,7 +79,7 @@ public class ShoppingActivity extends AppCompatActivity {
         Fragment fragment = null;
 
         // Create a new fragment based on the used selection in the nav drawer
-        /*
+       /*
         int itemId = menuItem.getItemId();
         if (itemId == R.id.menu_add) {
             fragment = new TakeQuiz();
@@ -86,8 +92,8 @@ public class ShoppingActivity extends AppCompatActivity {
         } else {
             return;
         }
+*/
 
-         */
 
         // Set up the fragment by replacing any existing fragment in the main activity
         FragmentManager fragmentManager = getSupportFragmentManager();
