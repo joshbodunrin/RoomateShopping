@@ -86,12 +86,9 @@ public class ShoppingActivity extends AppCompatActivity {
         int itemId = menuItem.getItemId();
         if (itemId == R.id.menu_add) {
             fragment = new AddShoppingItem();
-        }
-        Log.d(TAG, "item id that is being linked  " + itemId);
-        Log.d(TAG, "menu id   " + R.id.menu_add);
-        /*else if (itemId == R.id.menu_review) {
-            fragment = new ViewQuizzes();
-        } else if (itemId == R.id.menu_help) {
+        } else if (itemId == R.id.menu_review) {
+            fragment = new ReviewItems();
+        } /*else if (itemId == R.id.menu_help) {
             fragment = new HomeScreen();
         } else if (itemId == R.id.menu_close) {
             finish();

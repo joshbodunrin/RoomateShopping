@@ -22,10 +22,17 @@ public class ItemListRecyclerAdapter extends RecyclerView.Adapter<ItemListRecycl
     private List<Item> itemList;
     private Context context;
 
+    public ItemListRecyclerAdapter( List<Item> itemsList, Context context ) {
+        this.itemList = itemsList;
+        this.context = context;
+    }
+
+
     class ItemHolder extends RecyclerView.ViewHolder {
 
         TextView itemName;
         TextView cost;
+
 
         public ItemHolder(View itemView ) {
             super(itemView);
