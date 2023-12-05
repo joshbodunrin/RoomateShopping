@@ -4,12 +4,38 @@
     <color name="light_orange">#FFE082</color>
     <color name="orange">#FFA000</color>
     <color name="dark_orange">#FF6F00</color>
-    <color name="green_white">#DCEDC8</color>
+    <color name="green_white">#bbbbbb</color>
     <color name="light_green">#C5E1A5</color>
     <color name="green">#689F38</color>
     <color name="dark_green">#33691E</color>
     <color name="blue">#1976D2</color>
     <color name="brown">#5D4037</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFF0000</color>
+
+    <!-- Green Activity Branding Colors -->
+    <color name="theme_green_primary_dark">@color/dark_green</color>
+    <color name="theme_green_primary">@color/green</color>
+    <color name="theme_green_accent">@color/dark_orange</color>
+    <color name="theme_green_background">@color/theme_green_primary</color>
+    <color name="theme_green_control_highlight">@color/theme_green_primary</color>
+    <color name="theme_green_status_bar">@color/theme_green_primary_dark</color>
+    <color name="theme_green_action_bar">@color/theme_green_primary</color>
+    <color name="theme_green_window_background">@color/green_white</color>
+    <color name="theme_green_bottom_bar">@color/theme_green_primary</color>
+    <color name="theme_green_nav_bar">@color/theme_green_primary_dark</color>
+    <color name="theme_green_linear_content_background">@color/light_green</color>
+    <color name="theme_green_heading_text_color">@color/dark_orange</color>
+    <color name="theme_green_toolbar_overflow_text_color">@color/white</color>
+    <!-- Text color for Green -->
+    <color name="theme_green_text_color">@color/brown</color>
+
+    <!-- Other colors -->
+    <color name="layout_divider_color">@color/brown</color>
+    <color name="image_view_tint_color">@color/blue</color>
+    <color name="theme_circle">@color/brown</color>
+    <color name="circle">@color/white</color>
+    <color name="default_toolbar">@color/black</color>
+    <color name="default_fab_tint">@color/white</color>
+    <color name="transparent">@android:color/transparent</color>
 </resources>
