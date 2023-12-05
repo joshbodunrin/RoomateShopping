@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String TAG = "RoomateShooping";
+    public static final String TAG = "RoommateShopping";
     private FirebaseAuth mAuth;
 
     @Override

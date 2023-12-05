@@ -89,9 +89,11 @@ public class ShoppingActivity extends AppCompatActivity {
         } else if (itemId == R.id.menu_review) {
             fragment = new ReviewItems();
 
+
         }
         /*
         else if (itemId == R.id.menu_help) {
+
             fragment = new HomeScreen();
         } else if (itemId == R.id.menu_close) {
             finish();
