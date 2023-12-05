@@ -51,6 +51,7 @@ implements EditItemDialogFragment.EditItemDialogListener{
     private List<Item> itemsList;
 
     private FirebaseDatabase database;
+    private String email;
 
 
 
@@ -63,6 +64,9 @@ implements EditItemDialogFragment.EditItemDialogListener{
         setContentView(R.layout.activity_review_items);
 
         Log.d(TAG, "onViewCreated()" );
+
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
 
         recyclerView = findViewById(R.id.recyclerView);
         toolbar = findViewById(R.id.toolbar2);
@@ -281,7 +285,7 @@ implements EditItemDialogFragment.EditItemDialogListener{
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    snapshot.getRef().setValue(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    snapshot.getRef().removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Log.d(TAG, "updated item at: " + position + "(" + item.getName() + ")");

@@ -29,6 +29,8 @@ public class ShoppingActivity extends AppCompatActivity {
     private Button viewList;
     private Button myList;
     private Button logOut;
+
+    private String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +58,8 @@ public class ShoppingActivity extends AppCompatActivity {
                 });
 
         imageView = findViewById(R.id.imageView);
-
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
 
     }
 
@@ -82,19 +85,27 @@ public class ShoppingActivity extends AppCompatActivity {
         int itemId = menuItem.getItemId();
         if (itemId == R.id.menu_add) {
             Intent intent = new Intent(this, AddShoppingItem.class);
+            intent.putExtra("email", email);
             startActivity(intent);
         } else if (itemId == R.id.menu_list) {
             Intent intent = new Intent(this, ReviewItems.class);
+            intent.putExtra("email",email);
             startActivity(intent);
 
         } else if (itemId == R.id.menu_help) {
             Intent intent = new Intent(this, PurchasedItems.class);
+            intent.putExtra("email",email);
             startActivity(intent);
         } else if (itemId == R.id.menu_bucket) {
             Intent intent = new Intent(this, ShoppingBucket.class);
+            intent.putExtra("email",email);
             startActivity(intent);
         } else if (itemId == R.id.menu_close) {
             finish();
+        } else if (itemId == R.id.menu_price) {
+            Intent intent = new Intent(this, PriceActivity.class);
+            intent.putExtra("email",email);
+            startActivity(intent);
         } else {
             return;
         }

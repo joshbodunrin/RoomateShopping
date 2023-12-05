@@ -75,6 +75,8 @@ public class ItemListRecyclerAdapter extends RecyclerView.Adapter<ItemListRecycl
 
         holder.itemName.setText( item.getName());
         holder.cost.setText(String.valueOf(item.getPrice()));
+        if (item.getBuyer() != null)
+            holder.buyer.setText(item.getBuyer());
 
         //LOOK AT THIS STUFF, THIS IS FROM JOBLEADS
         // We can attach an OnClickListener to the itemView of the holder;
