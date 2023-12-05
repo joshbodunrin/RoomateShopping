@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +45,15 @@ public class PurchasedItems extends AppCompatActivity
 
     private FirebaseDatabase database;
 
+
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
+    private NavigationView navigationView;
+
+    private ActionBarDrawerToggle drawerToggle;
+
     private String email;
+
 
 
 
@@ -58,6 +71,21 @@ public class PurchasedItems extends AppCompatActivity
         email = intent.getStringExtra("email");
 
         recyclerView = findViewById(R.id.recyclerView);
+        toolbar = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerToggle = setupDrawerToggle();
+
+        drawerToggle.setDrawerIndicatorEnabled(true);
+        drawerToggle.syncState();
+
+        navigationView = findViewById( R.id.nvView );
+        navigationView.setNavigationItemSelectedListener(
+                menuItem -> {
+                    selectDrawerItem( menuItem );
+                    return true;
+                });
 
         itemsList = new ArrayList<Item>();
 
@@ -104,7 +132,53 @@ public class PurchasedItems extends AppCompatActivity
     }
 
 
+    private ActionBarDrawerToggle setupDrawerToggle() {
+        // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
+        // and will not render the hamburger icon without it.
+        return new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open,  R.string.drawer_close );
+    }
 
+    public void selectDrawerItem( MenuItem menuItem ) {
+
+
+        // Create a new fragment based on the used selection in the nav drawer
+
+
+        int itemId = menuItem.getItemId();
+        if (itemId == R.id.menu_add) {
+            Intent intent = new Intent(this, AddShoppingItem.class);
+            startActivity(intent);
+        } else if (itemId == R.id.menu_list) {
+            Intent intent = new Intent(this, ReviewItems.class);
+            startActivity(intent);
+
+        } else if (itemId == R.id.menu_help) {
+            Intent intent = new Intent(this, PurchasedItems.class);
+            startActivity(intent);
+        } else if (itemId == R.id.menu_bucket) {
+            Intent intent = new Intent(this, ShoppingBucket.class);
+            startActivity(intent);
+        } else if (itemId == R.id.menu_close) {
+            finish();
+        } else {
+            return;
+        }
+
+
+
+
+
+        /*
+        // this is included here as a possible future modification
+        // Highlight the selected item has been done by NavigationView
+        menuItem.setChecked( true );
+        // Set action bar title
+        setTitle( menuItem.getTitle());
+         */
+
+        // Close the navigation drawer
+        drawerLayout.closeDrawers();
+    }
 
 
     public void updateItem(int position, Item item, int action) {
