@@ -33,6 +33,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Item Cost" />
+
+            <TextView
+                android:id="@+id/itemBuyer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Buyer" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

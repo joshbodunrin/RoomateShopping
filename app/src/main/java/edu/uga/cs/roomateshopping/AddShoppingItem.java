@@ -97,7 +97,8 @@ public class AddShoppingItem extends Fragment {
             String p = priceView.getText().toString();
             Log.d(TAG, "price string  " + p);
             double price = Double.parseDouble(p);
-            final Item shoppingItem = new Item(item, price);
+            final Item shoppingItem;
+            shoppingItem = new Item(item, price);
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("items");
