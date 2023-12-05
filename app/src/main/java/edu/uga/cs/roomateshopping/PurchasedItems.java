@@ -2,6 +2,7 @@ package edu.uga.cs.roomateshopping;
 
 import static android.app.PendingIntent.getActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,7 +31,7 @@ import java.util.List;
 public class PurchasedItems extends AppCompatActivity
         implements EditItemDialogFragment.EditItemDialogListener{
 
-    public static final String TAG = "ReviewItemsFragment";
+    public static final String TAG = "PurcchasedItemsFragment";
 
     private RecyclerView recyclerView;
     private ItemListRecyclerAdapter recyclerAdapter;
@@ -38,6 +39,8 @@ public class PurchasedItems extends AppCompatActivity
     private List<Item> itemsList;
 
     private FirebaseDatabase database;
+
+    private String email;
 
 
 
@@ -50,6 +53,9 @@ public class PurchasedItems extends AppCompatActivity
         setContentView(R.layout.activity_review_items);
 
         Log.d(TAG, "onViewCreated()" );
+
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
 
         recyclerView = findViewById(R.id.recyclerView);
 
