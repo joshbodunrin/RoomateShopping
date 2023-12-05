@@ -27,8 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReviewItems extends AppCompatActivity
-implements EditItemDialogFragment.EditItemDialogListener{
+public class ShoppingBucket extends AppCompatActivity
+        implements EditItemDialogFragment.EditItemDialogListener{
 
     public static final String TAG = "ReviewItemsFragment";
 
@@ -58,7 +58,7 @@ implements EditItemDialogFragment.EditItemDialogListener{
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerAdapter = new ItemListRecyclerAdapter(itemsList, getApplicationContext(), ReviewItems.this);
+        recyclerAdapter = new ItemListRecyclerAdapter(itemsList, getApplicationContext(), ShoppingBucket.this);
         recyclerView.setAdapter(recyclerAdapter);
 
         database = FirebaseDatabase.getInstance();
@@ -114,7 +114,7 @@ implements EditItemDialogFragment.EditItemDialogListener{
 
 
             //update item in Firebase
-            DatabaseReference ref = database.getReference().child("items").child(item.getKey());
+            DatabaseReference ref = database.getReference().child("shoppingBucket").child(item.getKey());
 
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -149,7 +149,7 @@ implements EditItemDialogFragment.EditItemDialogListener{
             recyclerAdapter.notifyItemChanged(position);
 
             //update item in Firebase
-            DatabaseReference ref = database.getReference().child("items").child(item.getKey());
+            DatabaseReference ref = database.getReference().child("shoppingBucket").child(item.getKey());
 
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -181,9 +181,10 @@ implements EditItemDialogFragment.EditItemDialogListener{
         } else if (action == -1) {
 
             Item oldItem = itemsList.get(position);
-            Item bucketItem = new Item(oldItem.getName(),oldItem.getPrice());
-            DatabaseReference ref = database.getReference("shoppingBucket");
-            ref.push().setValue(bucketItem)
+            Item purchasedItem = new Item(oldItem.getName(),oldItem.getPrice());
+            //will set the buyer of the product here
+            DatabaseReference ref = database.getReference("purchasedItems");
+            ref.push().setValue(purchasedItem)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -201,7 +202,7 @@ implements EditItemDialogFragment.EditItemDialogListener{
                         }
                     });
 
-            ref = database.getReference().child("items").child(item.getKey());
+            ref = database.getReference().child("shoppingBucket").child(item.getKey());
 
             // remove deleted item from list
             itemsList.remove(position);
