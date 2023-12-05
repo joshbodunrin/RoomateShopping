@@ -36,7 +36,7 @@ import java.util.List;
 public class PurchasedItems extends AppCompatActivity
         implements EditItemDialogFragment.EditItemDialogListener{
 
-    public static final String TAG = "ReviewItemsFragment";
+    public static final String TAG = "PurcchasedItemsFragment";
 
     private RecyclerView recyclerView;
     private ItemListRecyclerAdapter recyclerAdapter;
@@ -45,11 +45,16 @@ public class PurchasedItems extends AppCompatActivity
 
     private FirebaseDatabase database;
 
+
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
 
     private ActionBarDrawerToggle drawerToggle;
+
+    private String email;
+
+
 
 
 
@@ -61,6 +66,9 @@ public class PurchasedItems extends AppCompatActivity
         setContentView(R.layout.activity_review_items);
 
         Log.d(TAG, "onViewCreated()" );
+
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
 
         recyclerView = findViewById(R.id.recyclerView);
         toolbar = findViewById(R.id.toolbar2);

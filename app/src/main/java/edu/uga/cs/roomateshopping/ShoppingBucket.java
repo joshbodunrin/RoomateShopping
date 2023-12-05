@@ -2,6 +2,10 @@ package edu.uga.cs.roomateshopping;
 
 import static android.app.PendingIntent.getActivity;
 
+
+import static com.google.firebase.auth.AuthKt.getAuth;
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +27,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import com.google.android.material.navigation.NavigationView;
+
+import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +44,7 @@ import java.util.List;
 public class ShoppingBucket extends AppCompatActivity
         implements EditItemDialogFragment.EditItemDialogListener{
 
-    public static final String TAG = "ReviewItemsFragment";
+    public static final String TAG = "ShoppingBucketFragment";
 
     private RecyclerView recyclerView;
     private ItemListRecyclerAdapter recyclerAdapter;
@@ -50,6 +58,8 @@ public class ShoppingBucket extends AppCompatActivity
 
     private ActionBarDrawerToggle drawerToggle;
 
+    private String email;
+
 
 
 
@@ -61,6 +71,9 @@ public class ShoppingBucket extends AppCompatActivity
         setContentView(R.layout.activity_review_items);
 
         Log.d(TAG, "onViewCreated()" );
+
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
 
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -89,7 +102,7 @@ public class ShoppingBucket extends AppCompatActivity
         recyclerView.setAdapter(recyclerAdapter);
 
         database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("items");
+        DatabaseReference myRef = database.getReference("shoppingBucket");
 
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -257,6 +270,7 @@ public class ShoppingBucket extends AppCompatActivity
             Item purchasedItem = new Item(oldItem.getName(),oldItem.getPrice());
             //will set the buyer of the product here
             DatabaseReference ref = database.getReference("purchasedItems");
+            purchasedItem.setBuyer(email);
             ref.push().setValue(purchasedItem)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -286,7 +300,7 @@ public class ShoppingBucket extends AppCompatActivity
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    snapshot.getRef().setValue(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    snapshot.getRef().removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Log.d(TAG, "updated item at: " + position + "(" + item.getName() + ")");

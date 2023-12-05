@@ -14,20 +14,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomateShopping"
         tools:targetApi="31">
-        <activity android:name=".PurchasedItems"
-            android:parentActivityName=".ShoppingActivity"
+        <activity
+            android:name=".PriceActivity"
             android:exported="false" />
-        <activity android:name=".ShoppingBucket"
-            android:parentActivityName=".ShoppingActivity"
-            android:exported="false" />
+        <activity
+            android:name=".PurchasedItems"
+            android:exported="false"
+            android:parentActivityName=".ShoppingActivity" />
+        <activity
+            android:name=".ShoppingBucket"
+            android:exported="false"
+            android:parentActivityName=".ShoppingActivity" />
         <activity
             android:name=".ReviewItems"
-            android:parentActivityName=".ShoppingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ShoppingActivity" />
         <activity
             android:name=".AddShoppingItem"
-            android:parentActivityName=".ShoppingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ShoppingActivity" />
         <activity
             android:name=".ShoppingActivity"
             android:exported="false" />
