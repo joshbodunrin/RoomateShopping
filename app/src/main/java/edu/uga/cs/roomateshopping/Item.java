@@ -24,13 +24,13 @@ public class Item {
         this.key = null;
         this.name = name;
         this.price = 0;
-        this.buyer = "Not Yet Claimed!";
+        this.buyer = null;
     }
     public Item(String name, double price) {
         this.key = null;
         this.name = name;
         this.price = price;
-        this.buyer = "Not Yet Claimed!";
+        this.buyer = null;
     }
 
     //getters and setters for instance variables
