@@ -41,12 +41,14 @@ public class ItemListRecyclerAdapter extends RecyclerView.Adapter<ItemListRecycl
 
         TextView itemName;
         TextView cost;
+        TextView buyer;
 
         public ItemHolder(View itemView ) {
             super(itemView);
 
             itemName = itemView.findViewById( R.id.itemName );
             cost = itemView.findViewById( R.id.itemCost );
+            buyer = itemView.findViewById(R.id.itemBuyer);
 
         }
 

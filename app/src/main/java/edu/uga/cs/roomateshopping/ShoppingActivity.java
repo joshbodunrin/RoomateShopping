@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -22,7 +23,7 @@ public class ShoppingActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
-
+    private ImageView imageView;
     private ActionBarDrawerToggle drawerToggle;
 
     private Button viewList;
@@ -54,7 +55,7 @@ public class ShoppingActivity extends AppCompatActivity {
                     return true;
                 });
 
-
+        imageView = findViewById(R.id.imageView);
 
 
     }
@@ -74,14 +75,14 @@ public class ShoppingActivity extends AppCompatActivity {
     }
 
     public void selectDrawerItem( MenuItem menuItem ) {
-        Fragment fragment = null;
 
         // Create a new fragment based on the used selection in the nav drawer
 
 
         int itemId = menuItem.getItemId();
         if (itemId == R.id.menu_add) {
-            fragment = new AddShoppingItem();
+            Intent intent = new Intent(this, AddShoppingItem.class);
+            startActivity(intent);
         } else if (itemId == R.id.menu_list) {
             Intent intent = new Intent(this, ReviewItems.class);
             startActivity(intent);
@@ -99,14 +100,6 @@ public class ShoppingActivity extends AppCompatActivity {
         }
 
 
-
-        // Set up the fragment by replacing any existing fragment in the main activity
-        if (fragment != null) {
-
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace( R.id.fragmentContainerView, fragment).addToBackStack("main screen" ).commit();
-
-        }
 
 
         /*

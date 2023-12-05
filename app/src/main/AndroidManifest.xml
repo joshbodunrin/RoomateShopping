@@ -25,6 +25,10 @@
             android:parentActivityName=".ShoppingActivity"
             android:exported="false" />
         <activity
+            android:name=".AddShoppingItem"
+            android:parentActivityName=".ShoppingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ShoppingActivity"
             android:exported="false" />
         <activity

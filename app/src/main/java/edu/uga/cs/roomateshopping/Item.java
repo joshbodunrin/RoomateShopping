@@ -11,8 +11,6 @@ public class Item {
 
     private double price;
 
-    private String description; // may not be needed
-
     private String buyer; // represent who purchased, may need to change to diff
                           // thinking of user email right now
 
@@ -20,32 +18,19 @@ public class Item {
         this.key = null;
         this.name = null;
         this.price = 0;
-        this.description = null;
         this.buyer = null;
     }
-
-
     public Item(String name) {
         this.key = null;
         this.name = name;
         this.price = 0;
-        this.description = null;
-        this.buyer = null;
+        this.buyer = "Not Yet Claimed!";
     }
-    public Item(String name, double price, String description) {
-        this.key = null;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.buyer = null;
-    }
-
     public Item(String name, double price) {
         this.key = null;
         this.name = name;
         this.price = price;
-        this.description = null;
-        this.buyer = null;
+        this.buyer = "Not Yet Claimed!";
     }
 
     //getters and setters for instance variables
@@ -58,10 +43,6 @@ public class Item {
         return buyer;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public String getKey() {
         return key;
     }
@@ -72,10 +53,6 @@ public class Item {
 
     public void setBuyer(String buyer) {
         this.buyer = buyer;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setKey(String key) {
