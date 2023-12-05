@@ -1,6 +1,5 @@
 package edu.uga.cs.roomateshopping;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,14 +9,11 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class ShoppingActivity extends AppCompatActivity {
 
@@ -86,24 +82,32 @@ public class ShoppingActivity extends AppCompatActivity {
         int itemId = menuItem.getItemId();
         if (itemId == R.id.menu_add) {
             fragment = new AddShoppingItem();
-        } else if (itemId == R.id.menu_review) {
-            fragment = new ReviewItems();
+        } else if (itemId == R.id.menu_list) {
+            Intent intent = new Intent(this, ReviewItems.class);
+            startActivity(intent);
 
-        }
-        /*
-        else if (itemId == R.id.menu_help) {
-            fragment = new HomeScreen();
+        } else if (itemId == R.id.menu_help) {
+            Intent intent = new Intent(this, PurchasedItems.class);
+            startActivity(intent);
+        } else if (itemId == R.id.menu_bucket) {
+            Intent intent = new Intent(this, ShoppingBucket.class);
+            startActivity(intent);
         } else if (itemId == R.id.menu_close) {
             finish();
         } else {
             return;
         }
-*/
+
 
 
         // Set up the fragment by replacing any existing fragment in the main activity
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace( R.id.fragmentContainerView, fragment).addToBackStack("main screen" ).commit();
+        if (fragment != null) {
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace( R.id.fragmentContainerView, fragment).addToBackStack("main screen" ).commit();
+
+        }
+
 
         /*
         // this is included here as a possible future modification
@@ -116,5 +120,7 @@ public class ShoppingActivity extends AppCompatActivity {
         // Close the navigation drawer
         drawerLayout.closeDrawers();
     }
+
+
 
 }

@@ -1,7 +1,9 @@
 package edu.uga.cs.roomateshopping;
 
+import static android.app.PendingIntent.getActivity;
 import static java.lang.String.valueOf;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -24,9 +28,12 @@ public class ItemListRecyclerAdapter extends RecyclerView.Adapter<ItemListRecycl
     private List<Item> itemList;
     private Context context;
 
-    public ItemListRecyclerAdapter( List<Item> itemList, Context context ) {
+    private Activity activity;
+
+    public ItemListRecyclerAdapter( List<Item> itemList, Context context, Activity activity ) {
         this.itemList = itemList;
         this.context = context;
+        this.activity = activity;
     }
 
 
@@ -44,20 +51,25 @@ public class ItemListRecyclerAdapter extends RecyclerView.Adapter<ItemListRecycl
         }
 
     }
+
     @Override
-    public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType ) {
+        public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType ) {
         View view = LayoutInflater.from( parent.getContext()).inflate( R.layout.item, parent, false );
         return new ItemHolder( view );
     }
+
+
     @Override
     public void onBindViewHolder( ItemHolder holder, int position ) {
         Item item = itemList.get( position );
 
-        String name = item.getName();
-        Double cost = item.getPrice();
 
-        Log.d(TAG, "here is the value of name  " + item.getName());
-        Log.d(TAG, "value of price here  " + item.getPrice());
+        String key = item.getKey();
+        String name = item.getName();
+        double cost = item.getPrice();
+
+        Log.d(TAG, "here is the value of key  " + item.getKey());
+        //Log.d(TAG, "value of price here  " + item.getPrice());
 
         holder.itemName.setText( item.getName());
         holder.cost.setText(String.valueOf(item.getPrice()));
@@ -70,19 +82,23 @@ public class ItemListRecyclerAdapter extends RecyclerView.Adapter<ItemListRecycl
         // This will indicate that the user wishes to edit (modify or delete) this item.
         // We create and show an EditJobLeadDialogFragment.
 
-        /*
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Log.d( TAG, "onBindViewHolder: getItemId: " + holder.getItemId() );
                 //Log.d( TAG, "onBindViewHolder: getAdapterPosition: " + holder.getAdapterPosition() );
-                EditJobLeadDialogFragment editJobFragment =
-                        EditJobLeadDialogFragment.newInstance( holder.getAdapterPosition(), key, company, phone, url, comments );
-                editJobFragment.show( ((AppCompatActivity)context).getSupportFragmentManager(), null);
+                EditItemDialogFragment editItemFragment =
+                        EditItemDialogFragment.newInstance( holder.getAdapterPosition(), key, name,cost );
+                Log.d(TAG, "HERE    " + valueOf(context));
+                //FragmentManager fragmentManager = ((FragmentActivity)context ).getSupportFragmentManager();
+
+                //editItemFragment.show(getSupportFragmentManager(),null);
+                editItemFragment.show(( (AppCompatActivity) activity).getSupportFragmentManager(),null);
             }
         });
 
-         */
+
     }
 
     @Override
