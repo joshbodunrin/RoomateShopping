@@ -12,11 +12,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Brand.Green"
+        android:theme="@style/brand"
         tools:targetApi="31">
         <activity
             android:name=".PriceActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ShoppingActivity" />
         <activity
             android:name=".PurchasedItems"
             android:exported="false"
